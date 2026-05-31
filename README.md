@@ -5,11 +5,6 @@ This repository contains the official technical blueprints, structured data payl
 
 The assets provided here enable technical communicators and information architects to reproduce our experimental verification and implement robust, graph-aware AI governance in industrial settings.
 
----
-
-## 📂 Repository Structure
-
-The repository is organized by article parts, each containing standalone verification environments and production-ready metadata payloads.
 
 ## 📂 Repository Structure
 
