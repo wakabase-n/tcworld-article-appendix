@@ -11,20 +11,45 @@ The assets provided here enable technical communicators and information architec
 
 The repository is organized by article parts, each containing standalone verification environments and production-ready metadata payloads.
 
-```text
+## 📂 Repository Structure
+
+The repository is organized by article parts, each containing standalone verification environments, advanced prompt execution packages, and production-ready metadata payloads.
+
 .
-├── README.md               # This central directory guide
-├── part1/                  # Part 1: Escape from Digital Landfill (V3 AEO)
-│   ├── README.md           # Part 1 Asset Index & Validation Logs
-│   ├── source/             # Raw SP-X Series input content
-│   └── prompts/            # Strategic Packing & Auditing Prompts
-├── part2/                  # Part 2: From Vectors to Graphs (V4 Architecture)
-│   ├── README.md           # Part 2 Asset Index, Graph Structures & Experiment Logs
-│   └── ontologies/         # iiRDS Atomic Data v1.2 RDF/Turtle payloads
-└── part3/                  # Part 3: Harvest (Active Governance & IoT Sync)
-    ├── README.md           # Part 3 Asset Index, Schema.org Payloads & Dashboards
-    └── payloads/           # Validated JSON-LD Schema.org files
-```
+├── README.md                                    # Central directory guide & CC BY-NC 4.0 rules
+├── part1/                                       # Part 1: Escape from Digital Landfill (V3 AEO)
+│   ├── README.md                                # Part 1 Asset Index & Workflow Guide
+│   ├── appendix_a_source_manual.md              # Raw input manual text (Chapter 3)
+│   ├── appendix_b_structuring_prompt.txt        # Phase 1: Structuring prompt
+│   ├── appendix_c_structured_data_v1.md         # Initial atomized V1 output
+│   ├── appendix_d_audit_prompt.txt              # Phase 2: Knowledge auditor prompt
+│   ├── appendix_e_master_data_v1.1.md           # Audited master data with subtraction
+│   ├── appendix_f_packing_prompt.txt            # Phase 3: Strategic packing prompt
+│   ├── appendix_g_rag_optimized_v3.md           # Final V3 RAG-optimized chunks
+│   ├── appendix_h_final_validation_prompt.txt   # Final verification prompt
+│   └── appendix_i_final_validation_report.md    # Chief auditor compliance pass log
+├── part2/                                       # Part 2: From Vectors to Graphs (V4 Architecture)
+│   ├── README.md                                # Part 2 Asset Index & Experiment Guide
+│   ├── appendix_a_graph_generation_prompt.txt   # Subject-Predicate-Object extraction prompt
+│   ├── appendix_b_knowledge_graph_triplets.md   # Compiled formal SPO relationship graph
+│   ├── appendix_c_iirds_annotation_prompt.txt   # High-end QA definition injection prompt
+│   ├── appendix_d_iirds_atomic_data_v1.2.json   # Purified V4 standalone atomic JSON chunks
+│   ├── appendix_e_test_a_v3_result.md           # TEST A: Probabilistic hallucination log
+│   ├── appendix_f_test_a_v1.2_result.md         # TEST A: Discipline of silence freeze log
+│   ├── appendix_g_test_b_v3_hybrid_result.md    # TEST B: Hybrid graph constraint result
+│   ├── appendix_h_test_b_v1.2_hybrid_result.md  # TEST B: Graph track absolute rejection log
+│   ├── appendix_i_test_c_v3_hybrid_result.md    # TEST C: Impedance mismatch failure log
+│   └── appendix_j_test_c_v1.2_hybrid_result.md  # TEST C: V4 cross-attribute inference victory log
+└── part3/                                       # Part 3: Harvest (Active Governance & Headless)
+    ├── README.md                                # Part 3 Asset Index & Implementation Guide
+    ├── appendix_a_5mm_silence_validation.md     # Test log documenting the V4 paradox
+    ├── appendix_c_schema_org_output.jsonld      # Validated nested Schema.org technical payload
+    └── prompts_and_datasets/                    # Isolated Appendix B extraction package
+        ├── b1_chunking_prompt.txt               # Property-value pair extraction instructions
+        ├── b2_graph_generation_prompt.txt       # Attribute node connecting rules
+        ├── b3_source_text_manual.md             # Baseline input target manual text
+        └── b4_advanced_iirds_definitions.json   # Complete iiRDS class definition dictionary
+
 
 ## 🛠️ Series Overview & Quick Links
 
