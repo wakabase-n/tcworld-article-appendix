@@ -15,6 +15,7 @@ The repository is organized by article parts, each containing standalone verific
 
 The repository is organized by article parts, each containing standalone verification environments, advanced prompt execution packages, and production-ready metadata payloads.
 
+```text
 .
 ├── README.md                                    # Central directory guide & CC BY-NC 4.0 rules
 ├── part1/                                       # Part 1: Escape from Digital Landfill (V3 AEO)
@@ -49,7 +50,7 @@ The repository is organized by article parts, each containing standalone verific
         ├── b2_graph_generation_prompt.txt       # Attribute node connecting rules
         ├── b3_source_text_manual.md             # Baseline input target manual text
         └── b4_advanced_iirds_definitions.json   # Complete iiRDS class definition dictionary
-
+```
 
 ## 🛠️ Series Overview & Quick Links
 
