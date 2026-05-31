@@ -1,0 +1,305 @@
+## Appendix B-4: Advanced iiRDS Definitions (JSON Format)
+
+
+```
+
+{
+  "meta": {
+    "source": "Guide for the Standardized Use of iiRDS",
+    "version": "1.0 (Complete Edition)",
+    "date": "2025-10-13",
+    "description": "Comprehensive definition set including Document Types, Topic Types, Info Subjects, Product Metadata, Functional Metadata, and Lifecycle Phases.",
+    "copyright": "© 2026 Natsuki Wakabayashi/ISE. Some rights reserved. This work is licensed under CC BY-NC 4.0. Based on iiRDS specifications."
+  },
+  "DocumentTypes": [
+    {
+      "iri": "iirds:OperatingInstructions",
+      "label": "Operating Instructions",
+      "definition": "Document type that refers to information on the correct use of the product.",
+      "indicators": [
+        "Purpose: Guide users in correct/safe use during normal operation.",
+        "Audience: End users, operators.",
+        "Features: Operating procedures, safety instructions, basic setup, troubleshooting for daily use."
+      ],
+      "what_it_is_not": "Administrator guides, Installation instructions."
+    },
+    {
+      "iri": "iirds:MaintenanceInstructions",
+      "label": "Maintenance Instructions",
+      "definition": "Document type that refers to information on procedures to be followed to ensure that a product remains in good working order.",
+      "indicators": [
+        "Purpose: Ensure continued safe/efficient operation through upkeep.",
+        "Audience: Maintenance personnel.",
+        "Features: Scheduled tasks, inspection checklists, cleaning, minor repair."
+      ],
+      "what_it_is_not": "Operating instructions, Repair instructions (deep overhaul)."
+    },
+    {
+      "iri": "iirds:InstallationInstructions",
+      "label": "Installation Instructions",
+      "definition": "Document type that refers to information on how to set up a product in the designated target environment.",
+      "indicators": [
+        "Purpose: Ensure proper/safe physical or software installation.",
+        "Audience: Technicians, system integrators.",
+        "Features: Mounting, required tools, safety notices for installation, initial setup."
+      ],
+      "what_it_is_not": "Maintenance instructions, Assembly instructions."
+    },
+    {
+      "iri": "iirds:AssemblyInstructions",
+      "label": "Assembly Instructions",
+      "definition": "Document type that refers to information on how parts are put together to complete a specific product.",
+      "indicators": [
+        "Purpose: Step-by-step guidance to assemble a product physically.",
+        "Audience: Technicians, assembly workers.",
+        "Features: Exploded views, sequential assembly steps."
+      ],
+      "what_it_is_not": "Installation instructions (mounting in environment)."
+    }
+  ],
+  "TopicTypes": [
+    {
+      "iri": "iirds:GenericTask",
+      "label": "Task",
+      "definition": "Topic type that provides procedures and action steps to be followed.",
+      "indicators": [
+        "Question: 'How do I...?'",
+        "Features: Imperative verbs (Click, Select), step-by-step instructions, prerequisites."
+      ],
+      "what_it_is_not": "Troubleshooting, Reference, Concept."
+    },
+    {
+      "iri": "iirds:GenericConcept",
+      "label": "Concept",
+      "definition": "Topic type providing background information or essential principles.",
+      "indicators": [
+        "Question: 'What is...?', 'Why...?'",
+        "Features: Definitions, architecture overviews, relationships, theory."
+      ],
+      "what_it_is_not": "Task, Reference."
+    },
+    {
+      "iri": "iirds:GenericReference",
+      "label": "Reference",
+      "definition": "Topic type that provides additional details for lookup.",
+      "indicators": [
+        "Question: 'What are the values/options?'",
+        "Features: Tables, parameter lists, UI element descriptions, error code lists."
+      ],
+      "what_it_is_not": "Task, Concept."
+    },
+    {
+      "iri": "iirds:GenericTroubleshooting",
+      "label": "Troubleshooting",
+      "definition": "Topic type that provides explanation on symptoms, diagnosis, and resolution.",
+      "indicators": [
+        "Question: 'What’s wrong and how do I fix it?'",
+        "Features: Symptom description, cause explanation, corrective actions."
+      ],
+      "what_it_is_not": "Standard maintenance task."
+    },
+    {
+      "iri": "iirds:GenericForm",
+      "label": "Form",
+      "definition": "Topic type that provides information in pre-defined fields to be filled out.",
+      "indicators": [
+        "Features: Field labels, checkboxes, empty lines for entry, checklists."
+      ],
+      "what_it_is_not": "Reference (static data)."
+    },
+    {
+      "iri": "iirds:GenericLearning",
+      "label": "Learning",
+      "definition": "Topic type that provides learning content.",
+      "indicators": [
+        "Purpose: Education / Training.",
+        "Features: Learning objectives, quizzes, tutorials."
+      ],
+      "what_it_is_not": "Concept (pure explanation without pedagogical structure)."
+    }
+  ],
+  "InformationSubjects": [
+    {
+      "iri": "iirds:GenericSafety",
+      "label": "Safety",
+      "definition": "Information subject that covers content which helps to avoid risk.",
+      "indicators": [
+        "Features: Signal words (DANGER, WARNING), hazard symbols, PPE requirements."
+      ],
+      "what_it_is_not": "Conformity statements."
+    },
+    {
+      "iri": "iirds:GenericTechnicalData",
+      "label": "Technical Data",
+      "definition": "Information subject covering qualitative and quantitative characteristics.",
+      "indicators": [
+        "Features: Dimensions, tolerances, performance metrics, units of measurement."
+      ],
+      "what_it_is_not": "Technical Overview."
+    },
+    {
+      "iri": "iirds:IntendedUse",
+      "label": "Intended Use",
+      "definition": "Information subject stating the range of functions or foreseen applications.",
+      "indicators": [
+        "Features: Target environments, user roles, functional boundaries, misuse warnings."
+      ],
+      "what_it_is_not": "Safety instructions."
+    },
+    {
+      "iri": "iirds:ProductIdentification",
+      "label": "Product Identification",
+      "definition": "Information subject covering the identity and characteristics of a product.",
+      "indicators": [
+        "Features: Model numbers, serial numbers, manufacturer details."
+      ],
+      "what_it_is_not": "Technical Data."
+    },
+    {
+      "iri": "iirds:GenericTechnicalOverview",
+      "label": "Technical Overview",
+      "definition": "Information subject covering the technical structure/architecture.",
+      "indicators": [
+        "Features: Block diagrams, system maps, component breakdown."
+      ],
+      "what_it_is_not": "Functionality (behavior)."
+    },
+    {
+      "iri": "iirds:OperatingElement",
+      "label": "Control Element",
+      "definition": "Information subject covering interaction elements in a user interface.",
+      "indicators": [
+        "Features: Buttons, switches, LEDs, icons, touch zones."
+      ],
+      "what_it_is_not": "Product Function."
+    },
+    {
+      "iri": "iirds:GenericConformity",
+      "label": "Conformity",
+      "definition": "Information subject covering applicable law, standards, or compliance.",
+      "indicators": [
+        "Features: Declaration of Conformity, CE marking, ISO standards, certificates."
+      ],
+      "what_it_is_not": "Safety."
+    },
+    {
+      "iri": "iirds:GenericProcess",
+      "label": "Process",
+      "definition": "Information subject covering structured activities achieving a specific goal.",
+      "indicators": [
+        "Features: Flowcharts, cross-functional workflows, swim lanes."
+      ],
+      "what_it_is_not": "Task (single procedure)."
+    }
+  ],
+  "ProductMetadata": [
+    {
+      "iri": "iirds:ProductVariant",
+      "label": "Product Variant",
+      "definition": "Item or service designed to meet needs of customers.",
+      "indicators": [
+        "Features: Specific model names (e.g., SP-X100), localized versions."
+      ],
+      "what_it_is_not": "Product family."
+    },
+    {
+      "iri": "iirds:Component",
+      "label": "Component",
+      "definition": "Part used as a constituent in an assembled product.",
+      "indicators": [
+        "Features: Physical parts (Screw, Motor, Board), BOM items."
+      ],
+      "what_it_is_not": "Product variant."
+    },
+    {
+      "iri": "iirds:GenericProductProperty",
+      "label": "Product Property",
+      "definition": "A characteristic that a product ALWAYS exhibits (Static).",
+      "indicators": [
+        "Features: Weight, dimensions, material, color, voltage rating."
+      ],
+      "what_it_is_not": "Product Function (dynamic)."
+    },
+    {
+      "iri": "iirds:GenericProductFunction",
+      "label": "Product Function",
+      "definition": "A characteristic exhibited only during a process (Dynamic).",
+      "indicators": [
+        "Features: Actions (Pumping, Heating), capabilities, modes."
+      ],
+      "what_it_is_not": "Product Property (static)."
+    }
+  ],
+  "FunctionalMetadata": [
+    {
+      "iri": "iirds:GenericRole",
+      "label": "Role",
+      "definition": "Set of behaviors associated with a party.",
+      "indicators": [
+        "Features: Job titles (Admin, Technician), user types."
+      ],
+      "what_it_is_not": "Specific person names."
+    },
+    {
+      "iri": "iirds:GenericPlanningTime",
+      "label": "Planning Time",
+      "definition": "Period of time required for a task.",
+      "indicators": [
+        "Features: Durations (mins, hours), 'Estimated time'."
+      ]
+    },
+    {
+      "iri": "iirds:GenericSupply",
+      "label": "Supply",
+      "definition": "Consumables used by an actor.",
+      "indicators": [
+        "Features: Grease, oil, cleaning fluid, replacement filters."
+      ],
+      "what_it_is_not": "Tools."
+    },
+    {
+      "iri": "iirds:GenericTool",
+      "label": "Tool",
+      "definition": "Instrument used by an actor.",
+      "indicators": [
+        "Features: Screwdriver, wrench, diagnostic software."
+      ],
+      "what_it_is_not": "Supply."
+    }
+  ],
+  "ProductLifecyclePhases": [
+    {
+      "iri": "iirds:GenericPuttingToUse",
+      "label": "Putting Into Use",
+      "definition": "Phase after production, before regular use.",
+      "indicators": [
+        "Features: Transportation, Unboxing, Mounting, Commissioning."
+      ]
+    },
+    {
+      "iri": "iirds:GenericUse",
+      "label": "Use",
+      "definition": "Phase where product realizes its function.",
+      "indicators": [
+        "Features: Normal operation, control."
+      ]
+    },
+    {
+      "iri": "iirds:MaintenancePhase",
+      "label": "Maintenance Phase",
+      "definition": "Phase comprising activities to retain/restore state.",
+      "indicators": [
+        "Features: Cleaning, Inspection, Repair."
+      ]
+    },
+    {
+      "iri": "iirds:Disposal",
+      "label": "Disposal",
+      "definition": "Phase of elimination.",
+      "indicators": [
+        "Features: Disassembly, recycling, scrapping."
+      ]
+    }
+  ]
+}
+```

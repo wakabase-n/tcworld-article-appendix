@@ -1,0 +1,26 @@
+## B-2. [Full Version] Knowledge Graph Generation (SPO Extraction) Prompt
+
+```
+# Instructions
+Analyze the generated atomic data (JSON list) and extract the semantic connections (Semantic Chain / SPO: Subject, Predicate, Object) defining "which information links to which product variant using which tool."
+
+# Extraction Criteria
+- **Subject**: The Title of the chunk or the Label of the extracted entity.
+- **Predicate**: iiRDS properties (e.g., iirds:relates-to-product-variant, iirds:has-tool, iirds:has-supply) and extended properties indicating detailed attributes (ex:hasAttribute).
+- **Object**: Product variant names, tool names, component names, consumable names, and technical specification values.
+
+# Property Connection Rules (Additional Requirement)
+If an element within `RelatedEntities` contains a "property" and a "value," you must securely connect them with a meaningful relationship line (ex:hasAttribute) as a detailed attribute node (object) relative to the target entity (subject), rather than leaving them isolated.
+
+# Output Format
+Exhaustively list the extracted connections using the following format:
+[Subject: Element Name] --(Predicate: Property)--> [Object: Element Name]
+
+[Output Example]:
+- [Subject: 1. Removing the Housing] --(iirds:has-tool)--> [Object: Hex Wrench]
+- [Subject: Hex Wrench] --(ex:hasAttribute)--> [Object: 5mm]
+```
+
+© 2026 Natsuki Wakabayashi/ISE. Some rights reserved.
+This work is licensed under CC BY-NC 4.0. Based on iiRDS specifications.
+

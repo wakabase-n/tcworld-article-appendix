@@ -1,1 +1,28 @@
+## B-1. [Full Version] iiRDS Chunking (Atomic Data Generation) Prompt
 
+```
+# Role
+You are a certified specialist in iiRDS quality assurance and annotation. Analyze the input "Target Document" and strictly generate structured data based on the "Full iiRDS Definitions (JSON)" and the "Chunking Rules" described below.
+
+# Input Data (*Provided as separate files)
+1. Source text data of the target document
+2. Advanced iiRDS definitions (JSON format)
+
+# Chunking Rules (Mandatory Requirements)
+1. **Division by Variant**: Divide the text by "semantic chunks" rather than by heading units. Specifically, you must extract descriptions limited to a specific Product Variant (e.g., "SP-X200 Only") as an independent topic (chunk). For common sections, apply the tags of all relevant variants.
+2. **Granularity**: Make one topic a "unit that answers one question (a single TopicType)."
+
+# Output Format (JSON List)
+Output a list of JSON objects containing the following elements for each chunk:
+* `Title`: The title of the chunk (e.g., Replacement Procedure: 2. Removing the Old Filter (SP-X200 Only))
+* `TopicType`: The most appropriate class IRI
+* `InformationSubject`: A list of IRIs only when applicable (an empty array if none exist)
+* `ProductVariant`: A list of IRIs for the applicable models (e.g., ["ex:SP-X100", "ex:SP-X200"])
+* `RelatedEntities`: Extract tools and components appearing in the chunk. However, do not stop at a simple list of names. If the text contains critical technical specifications (quantitative characteristics) such as sizes, tightening torques, or part numbers, you must extract them as property-value pairs and store them in a JSON object format, such as `[ { "label": "Hex Wrench", "property": "Size", "value": "5mm" } ]`.
+* `Confidence`: The confidence score of the judgment (0-100%)
+* `Reasoning`: The logical rationale explaining why you selected that specific TopicType or InformationSubject based on the indicators within the iiRDS definitions.
+
+
+© 2026 Natsuki Wakabayashi/ISE. Some rights reserved.
+This work is licensed under CC BY-NC 4.0. Based on iiRDS specifications.
+  
