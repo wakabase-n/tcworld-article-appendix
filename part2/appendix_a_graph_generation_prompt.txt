@@ -1,0 +1,24 @@
+
+## Appendix-A: Prompt for Generating Knowledge Graph from Atomic Data
+
+# Instructions
+
+Analyze the provided 16 chunks (`iiRDS_Atomic_Data_v1.2.txt`) and extract the **Semantic Chains** (SPO: Subject, Predicate, Object) that clearly define which information links to which product variant using which specific tool.
+
+# Extraction Criteria
+
+- **Subject**: The Title of each chunk
+    
+- **Predicate**: An iiRDS property (e.g., `iirds:relates-to-product-variant`, `iirds:has-tool`, `iirds:has-supply`)
+    
+- **Object**: A product variant name, tool name, part name, or consumable name
+    
+
+# Output Format
+
+Exhaustively list the relationships using the following format: `[Subject: Chunk Name] --(Predicate: iiRDS Property)--> [Object: Entity Name]`
+
+
+© 2026 Natsuki Wakabayashi/ISE. Some rights reserved.
+This work is licensed under CC BY-NC 4.0. Based on iiRDS specifications.
+

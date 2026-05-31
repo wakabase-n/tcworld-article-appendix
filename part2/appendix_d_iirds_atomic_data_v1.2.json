@@ -1,0 +1,138 @@
+## **Appendix D:** iiRDS Atomic Data v1.2 Details
+
+# Structured Data Output (JSON)
+
+Below is the annotation data extracted and structured based on the specified iiRDS definitions and chunking rules.
+
+JSON
+
+```
+[
+  {
+    "Title": "3.1 Maintenance Overview",
+    "TopicType": "iirds:GenericConcept",
+    "InformationSubject": [],
+    "ProductVariant": ["ex:SP-X100", "ex:SP-X200"],
+    "RelatedEntities": [],
+    "Confidence": 95,
+    "Reasoning": "Since this explains the background information and reasons (Why) for filter replacement, iirds:GenericConcept was selected for the TopicType, matching the indicators 'Question: \"What is...?\", \"Why...?\"' and 'background information'. It is left as an empty array because it does not meet the requirements for a specific InformationSubject."
+  },
+  {
+    "Title": "3.2 Safety Precautions (Common)",
+    "TopicType": "iirds:GenericConcept",
+    "InformationSubject": ["iirds:GenericSafety"],
+    "ProductVariant": ["ex:SP-X100", "ex:SP-X200"],
+    "RelatedEntities": [],
+    "Confidence": 100,
+    "Reasoning": "The TopicType was set to iirds:GenericConcept because it conveys safety principles rather than specific work procedures. For the InformationSubject, iirds:GenericSafety was selected because it includes the indicators 'Signal words (DANGER, WARNING)' and risk avoidance content, while verifying that it is not a 'Conformity statement' under what_it_is_not."
+  },
+  {
+    "Title": "3.2 Safety Precautions (SP-X200 Only)",
+    "TopicType": "iirds:GenericConcept",
+    "InformationSubject": ["iirds:GenericSafety"],
+    "ProductVariant": ["ex:SP-X200"],
+    "RelatedEntities": ["Chemical-Resistant Gloves", "Safety Glasses"],
+    "Confidence": 100,
+    "Reasoning": "Based on Chunking Rule 1, the caution restricted to the SP-X200 was separated into an independent chunk. The InformationSubject is iirds:GenericSafety because it covers risk avoidance regarding chemical burns and falls under the indicators 'Signal words' and 'PPE requirements (personal protective equipment requirements)'."
+  },
+  {
+    "Title": "3.3 Items to Prepare (Common)",
+    "TopicType": "iirds:GenericReference",
+    "InformationSubject": [],
+    "ProductVariant": ["ex:SP-X100", "ex:SP-X200"],
+    "RelatedEntities": ["O-ring (OR-S25)", "Hex Wrench (5mm)", "Torque Wrench"],
+    "Confidence": 95,
+    "Reasoning": "Since it provides a list of tools and components, matching the indicators 'Tables, parameter lists', iirds:GenericReference was selected for the TopicType. It also satisfies the what_it_is_not condition because it is not a Task (procedure). Only items used in common are extracted."
+  },
+  {
+    "Title": "3.3 Items to Prepare (SP-X100 Only)",
+    "TopicType": "iirds:GenericReference",
+    "InformationSubject": [],
+    "ProductVariant": ["ex:SP-X100"],
+    "RelatedEntities": ["Replacement Filter (FLT-X100)"],
+    "Confidence": 100,
+    "Reasoning": "According to Chunking Rule 1, the supply specification exclusive to the standard model was isolated. The TopicType is iirds:GenericReference because it consists of list information."
+  },
+  {
+    "Title": "3.3 Items to Prepare (SP-X200 Only)",
+    "TopicType": "iirds:GenericReference",
+    "InformationSubject": [],
+    "ProductVariant": ["ex:SP-X200"],
+    "RelatedEntities": ["Replacement Filter (FLT-X200)", "Ceramic Spanner (SP-TOOL-01)"],
+    "Confidence": 100,
+    "Reasoning": "In accordance with Chunking Rule 1, the specification of supplies and the special tool (SP-TOOL-01) exclusive to the chemical-resistant model was split into an independent chunk. It is classified as iirds:GenericReference as it represents list information."
+  },
+  {
+    "Title": "3.4 Replacement Procedure: 1. Removing the Housing (Common)",
+    "TopicType": "iirds:GenericTask",
+    "InformationSubject": [],
+    "ProductVariant": ["ex:SP-X100", "ex:SP-X200"],
+    "RelatedEntities": ["Hex Wrench (5mm)"],
+    "Confidence": 100,
+    "Reasoning": "iirds:GenericTask was chosen for the TopicType because it provides specific action steps responding to 'How do I...?' and contains the indicators 'Imperative verbs (loosen, pull out)'. It also satisfies the what_it_is_not condition because it is not Troubleshooting."
+  },
+  {
+    "Title": "3.4 Replacement Procedure: 2. Removing the Old Filter (SP-X100 Only)",
+    "TopicType": "iirds:GenericTask",
+    "InformationSubject": [],
+    "ProductVariant": ["ex:SP-X100"],
+    "RelatedEntities": [],
+    "Confidence": 100,
+    "Reasoning": "Based on Chunking Rule 1, the removal procedure exclusive to the SP-X100 was separated. It is designated as iirds:GenericTask since it provides specific operational instructions (Imperative verbs)."
+  },
+  {
+    "Title": "3.4 Replacement Procedure: 2. Removing the Old Filter (SP-X200 Only)",
+    "TopicType": "iirds:GenericTask",
+    "InformationSubject": [],
+    "ProductVariant": ["ex:SP-X200"],
+    "RelatedEntities": ["Ceramic Spanner (SP-TOOL-01)"],
+    "Confidence": 100,
+    "Reasoning": "This is isolated as an independent chunk as it describes a specific procedure unique to the SP-X200 involving removal using a dedicated tool when parts are seized. The TopicType is iirds:GenericTask to indicate a procedure."
+  },
+  {
+    "Title": "3.4 Replacement Procedure: 3–5. From Cleaning to Reassembly (Common)",
+    "TopicType": "iirds:GenericTask",
+    "InformationSubject": [],
+    "ProductVariant": ["ex:SP-X100", "ex:SP-X200"],
+    "RelatedEntities": ["O-ring (OR-S25)", "Silicone Grease", "Torque Wrench"],
+    "Confidence": 95,
+    "Reasoning": "This covers a series of assembly and tightening steps, which aligns with the indicators 'step-by-step instructions'. Since the tasks are common to both models, both variants are assigned."
+  },
+  {
+    "Title": "3.5 Disposal (Common)",
+    "TopicType": "iirds:GenericTask",
+    "InformationSubject": [],
+    "ProductVariant": ["ex:SP-X100", "ex:SP-X200"],
+    "RelatedEntities": [],
+    "Confidence": 90,
+    "Reasoning": "iirds:GenericTask was selected because it includes specific behavioral instructions on 'how to dispose of' the items (needs to be processed)."
+  },
+  {
+    "Title": "3.5 Disposal (SP-X200 Only)",
+    "TopicType": "iirds:GenericTask",
+    "InformationSubject": [],
+    "ProductVariant": ["ex:SP-X200"],
+    "RelatedEntities": [],
+    "Confidence": 100,
+    "Reasoning": "This was isolated because it is a processing procedure as Specially Controlled Industrial Waste exclusive to the SP-X200, taking into account the adhesion of hazardous chemical substances. It is iirds:GenericTask as it represents behavioral instructions."
+  },
+  {
+    "Title": "3.6 Main Specifications (SP-X100)",
+    "TopicType": "iirds:GenericReference",
+    "InformationSubject": ["iirds:GenericTechnicalData"],
+    "ProductVariant": ["ex:SP-X100"],
+    "RelatedEntities": [],
+    "Confidence": 100,
+    "Reasoning": "The TopicType is iirds:GenericReference because it is static specification data (Tables). iirds:GenericTechnicalData was selected for the InformationSubject as it perfectly matches the indicators 'performance metrics, units of measurement (MPa, ℃, µm)'."
+  },
+  {
+    "Title": "3.6 Main Specifications (SP-X200)",
+    "TopicType": "iirds:GenericReference",
+    "InformationSubject": ["iirds:GenericTechnicalData"],
+    "ProductVariant": ["ex:SP-X200"],
+    "RelatedEntities": [],
+    "Confidence": 100,
+    "Reasoning": "Extracted as an independent chunk by pulling the specific specifications of the SP-X200 (5 µm, 1.5 MPa, 90℃, PTFE lining) from the table. It is set to iirds:GenericTechnicalData because it contains performance metrics accompanied by numbers and units."
+  }
+]
+```

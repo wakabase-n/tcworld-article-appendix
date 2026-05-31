@@ -1,0 +1,424 @@
+
+## **Appendix C:** iiRDS Structuring Prompt for Atomic Data v1.2
+
+
+# Role
+
+You are a certified specialist in iiRDS quality assurance and annotation. Analyze the provided "Target Document." Subsequently, generate strictly structured data based on the "iiRDS Complete Definition (JSON)" and the "Chunking Rules" described below.
+
+# Chunking Rules (Mandatory Requirements)
+
+1. **Split by Variant**: Do not split information simply by headings. Instead, divide the text into logical blocks based on meaning. Specifically, if a description applies only to a specific Product Variant (e.g., "SP-X200 only"), you must separate it into an independent topic (chunk). For common sections, apply tags for all relevant variants.
+    
+2. **Granularity**: Ensure each topic acts as a standalone unit that answers exactly one question (corresponding to a single TopicType).
+    
+
+# Output Format (JSON List)
+
+Output a list of JSON objects containing the following elements for each chunk:
+
+- `Title`: The title of the chunk (e.g., Replacement Procedure: 2. Removing the Old Filter (SP-X200 Only))
+    
+- `TopicType`: The most appropriate class IRI.
+    
+- `InformationSubject`: A list of IRIs, if applicable (leave as an empty array if none apply).
+    
+- `ProductVariant`: A list of IRIs for the applicable variants (e.g., `["ex:SP-X100", "ex:SP-X200"]`).
+    
+- `RelatedEntities`: Extracted tools, supplies, or components that appear within the chunk.
+    
+- `Confidence`: The confidence level of your determination (0–100%).
+    
+- `Reasoning`: **Provide a logical explanation for your choice of TopicType or InformationSubject. Specifically, you must explicitly cite the `indicators` or `what_it_is_not` fields from the iiRDS definitions.**
+    
+
+# iiRDS Complete Definition (Knowledge Base)
+
+JSON
+
+```
+{
+  "meta": {
+    "source": "Guide for the Standardized Use of iiRDS",
+    "version": "1.0 (Complete Edition)",
+    "date": "2025-10-13",
+    "description": "Comprehensive definition set including Document Types, Topic Types, Info Subjects, Product Metadata, Functional Metadata, and Lifecycle Phases."
+  },
+  "DocumentTypes": [
+    {
+      "iri": "iirds:OperatingInstructions",
+      "label": "Operating Instructions",
+      "definition": "Document type that refers to information on the correct use of the product.",
+      "indicators": [
+        "Purpose: Guide users in correct/safe use during normal operation.",
+        "Audience: End users, operators.",
+        "Features: Operating procedures, safety instructions, basic setup, troubleshooting for daily use."
+      ],
+      "what_it_is_not": "Administrator guides, Installation instructions."
+    },
+    {
+      "iri": "iirds:MaintenanceInstructions",
+      "label": "Maintenance Instructions",
+      "definition": "Document type that refers to information on procedures to be followed to ensure that a product remains in good working order.",
+      "indicators": [
+        "Purpose: Ensure continued safe/efficient operation through upkeep.",
+        "Audience: Maintenance personnel.",
+        "Features: Scheduled tasks, inspection checklists, cleaning, minor repair."
+      ],
+      "what_it_is_not": "Operating instructions, Repair instructions (deep overhaul)."
+    },
+    {
+      "iri": "iirds:InstallationInstructions",
+      "label": "Installation Instructions",
+      "definition": "Document type that refers to information on how to set up a product in the designated target environment.",
+      "indicators": [
+        "Purpose: Ensure proper/safe physical or software installation.",
+        "Audience: Technicians, system integrators.",
+        "Features: Mounting, required tools, safety notices for installation, initial setup."
+      ],
+      "what_it_is_not": "Maintenance instructions, Assembly instructions."
+    },
+    {
+      "iri": "iirds:AssemblyInstructions",
+      "label": "Assembly Instructions",
+      "definition": "Document type that refers to information on how parts are put together to complete a specific product.",
+      "indicators": [
+        "Purpose: Step-by-step guidance to assemble a product physically.",
+        "Audience: Technicians, assembly workers.",
+        "Features: Exploded views, sequential assembly steps."
+      ],
+      "what_it_is_not": "Installation instructions (mounting in environment)."
+    }
+  ],
+  "TopicTypes": [
+    {
+      "iri": "iirds:GenericTask",
+      "label": "Task",
+      "definition": "Topic type that provides procedures and action steps to be followed.",
+      "indicators": [
+        "Question: 'How do I...?'",
+        "Features: Imperative verbs (Click, Select), step-by-step instructions, prerequisites."
+      ],
+      "what_it_is_not": "Troubleshooting, Reference, Concept."
+    },
+    {
+      "iri": "iirds:GenericConcept",
+      "label": "Concept",
+      "definition": "Topic type providing background information or essential principles.",
+      "indicators": [
+        "Question: 'What is...?', 'Why...?'",
+        "Features: Definitions, architecture overviews, relationships, theory."
+      ],
+      "what_it_is_not": "Task, Reference."
+    },
+    {
+      "iri": "iirds:GenericReference",
+      "label": "Reference",
+      "definition": "Topic type that provides additional details for lookup.",
+      "indicators": [
+        "Question: 'What are the values/options?'",
+        "Features: Tables, parameter lists, UI element descriptions, error code lists."
+      ],
+      "what_it_is_not": "Task, Concept."
+    },
+    {
+      "iri": "iirds:GenericTroubleshooting",
+      "label": "Troubleshooting",
+      "definition": "Topic type that provides explanation on symptoms, diagnosis, and resolution.",
+      "indicators": [
+        "Question: 'What’s wrong and how do I fix it?'",
+        "Features: Symptom description, cause explanation, corrective actions."
+      ],
+      "what_it_is_not": "Standard maintenance task."
+    },
+    {
+      "iri": "iirds:GenericForm",
+      "label": "Form",
+      "definition": "Topic type that provides information in pre-defined fields to be filled out.",
+      "indicators": [
+        "Features: Field labels, checkboxes, empty lines for entry, checklists."
+      ],
+      "what_it_is_not": "Reference (static data)."
+    },
+    {
+      "iri": "iirds:GenericLearning",
+      "label": "Learning",
+      "definition": "Topic type that provides learning content.",
+      "indicators": [
+        "Purpose: Education / Training.",
+        "Features: Learning objectives, quizzes, tutorials."
+      ],
+      "what_it_is_not": "Concept (pure explanation without pedagogical structure)."
+    }
+  ],
+  "InformationSubjects": [
+    {
+      "iri": "iirds:GenericSafety",
+      "label": "Safety",
+      "definition": "Information subject that covers content which helps to avoid risk.",
+      "indicators": [
+        "Features: Signal words (DANGER, WARNING), hazard symbols, PPE requirements."
+      ],
+      "what_it_is_not": "Conformity statements."
+    },
+    {
+      "iri": "iirds:GenericTechnicalData",
+      "label": "Technical Data",
+      "definition": "Information subject covering qualitative and quantitative characteristics.",
+      "indicators": [
+        "Features: Dimensions, tolerances, performance metrics, units of measurement."
+      ],
+      "what_it_is_not": "Technical Overview."
+    },
+    {
+      "iri": "iirds:IntendedUse",
+      "label": "Intended Use",
+      "definition": "Information subject stating the range of functions or foreseen applications.",
+      "indicators": [
+        "Features: Target environments, user roles, functional boundaries, misuse warnings."
+      ],
+      "what_it_is_not": "Safety instructions."
+    },
+    {
+      "iri": "iirds:ProductIdentification",
+      "label": "Product Identification",
+      "definition": "Information subject covering the identity and characteristics of a product.",
+      "indicators": [
+        "Features: Model numbers, serial numbers, manufacturer details."
+      ],
+      "what_it_is_not": "Technical Data."
+    },
+    {
+      "iri": "iirds:GenericTechnicalOverview",
+      "label": "Technical Overview",
+      "definition": "Information subject covering the technical structure/architecture.",
+      "indicators": [
+        "Features: Block diagrams, system maps, component breakdown."
+      ],
+      "what_it_is_not": "Functionality (behavior)."
+    },
+    {
+      "iri": "iirds:OperatingElement",
+      "label": "Control Element",
+      "definition": "Information subject covering interaction elements in a user interface.",
+      "indicators": [
+        "Features: Buttons, switches, LEDs, icons, touch zones."
+      ],
+      "what_it_is_not": "Product Function."
+    },
+    {
+      "iri": "iirds:GenericConformity",
+      "label": "Conformity",
+      "definition": "Information subject covering applicable law, standards, or compliance.",
+      "indicators": [
+        "Features: Declaration of Conformity, CE marking, ISO standards, certificates."
+      ],
+      "what_it_is_not": "Safety."
+    },
+    {
+      "iri": "iirds:GenericProcess",
+      "label": "Process",
+      "definition": "Information subject covering structured activities achieving a specific goal.",
+      "indicators": [
+        "Features: Flowcharts, cross-functional workflows, swim lanes."
+      ],
+      "what_it_is_not": "Task (single procedure)."
+    }
+  ],
+  "ProductMetadata": [
+    {
+      "iri": "iirds:ProductVariant",
+      "label": "Product Variant",
+      "definition": "Item or service designed to meet needs of customers.",
+      "indicators": [
+        "Features: Specific model names (e.g., SP-X100), localized versions."
+      ],
+      "what_it_is_not": "Product family."
+    },
+    {
+      "iri": "iirds:Component",
+      "label": "Component",
+      "definition": "Part used as a constituent in an assembled product.",
+      "indicators": [
+        "Features: Physical parts (Screw, Motor, Board), BOM items."
+      ],
+      "what_it_is_not": "Product variant."
+    },
+    {
+      "iri": "iirds:GenericProductProperty",
+      "label": "Product Property",
+      "definition": "A characteristic that a product ALWAYS exhibits (Static).",
+      "indicators": [
+        "Features: Weight, dimensions, material, color, voltage rating."
+      ],
+      "what_it_is_not": "Product Function (dynamic)."
+    },
+    {
+      "iri": "iirds:GenericProductFunction",
+      "label": "Product Function",
+      "definition": "A characteristic exhibited only during a process (Dynamic).",
+      "indicators": [
+        "Features: Actions (Pumping, Heating), capabilities, modes."
+      ],
+      "what_it_is_not": "Product Property (static)."
+    }
+  ],
+  "FunctionalMetadata": [
+    {
+      "iri": "iirds:GenericRole",
+      "label": "Role",
+      "definition": "Set of behaviors associated with a party.",
+      "indicators": [
+        "Features: Job titles (Admin, Technician), user types."
+      ],
+      "what_it_is_not": "Specific person names."
+    },
+    {
+      "iri": "iirds:GenericPlanningTime",
+      "label": "Planning Time",
+      "definition": "Period of time required for a task.",
+      "indicators": [
+        "Features: Durations (mins, hours), 'Estimated time'."
+      ]
+    },
+    {
+      "iri": "iirds:GenericSupply",
+      "label": "Supply",
+      "definition": "Consumables used by an actor.",
+      "indicators": [
+        "Features: Grease, oil, cleaning fluid, replacement filters."
+      ],
+      "what_it_is_not": "Tools."
+    },
+    {
+      "iri": "iirds:GenericTool",
+      "label": "Tool",
+      "definition": "Instrument used by an actor.",
+      "indicators": [
+        "Features: Screwdriver, wrench, diagnostic software."
+      ],
+      "what_it_is_not": "Supply."
+    }
+  ],
+  "ProductLifecyclePhases": [
+    {
+      "iri": "iirds:GenericPuttingToUse",
+      "label": "Putting Into Use",
+      "definition": "Phase after production, before regular use.",
+      "indicators": [
+        "Features: Transportation, Unboxing, Mounting, Commissioning."
+      ]
+    },
+    {
+      "iri": "iirds:GenericUse",
+      "label": "Use",
+      "definition": "Phase where product realizes its function.",
+      "indicators": [
+        "Features: Normal operation, control."
+      ]
+    },
+    {
+      "iri": "iirds:MaintenancePhase",
+      "label": "Maintenance Phase",
+      "definition": "Phase comprising activities to retain/restore state.",
+      "indicators": [
+        "Features: Cleaning, Inspection, Repair."
+      ]
+    },
+    {
+      "iri": "iirds:Disposal",
+      "label": "Disposal",
+      "definition": "Phase of elimination.",
+      "indicators": [
+        "Features: Disassembly, recycling, scrapping."
+      ]
+    }
+  ]
+}
+```
+
+# Target Document
+
+# 10_Smart Pump SP-X Series Operating Instructions Chapter 3
+
+# Chapter 3 Filter Element Replacement
+
+## 3.1 Maintenance Overview
+
+In the Smart Pump SP-X Series (SP-X100 and SP-X200), the filter element represents the most critical component for maintaining product performance. If the filter becomes clogged, discharge pressure will drop and the motor may overload.
+
+Therefore, replace the filter element when the cumulative operating time reaches 500 hours or when the differential pressure gauge reading exceeds 0.2 MPa, whichever occurs first. Routine replacement extends the pump's lifespan and prevents sudden equipment failures.
+
+## 3.2 Safety Precautions
+
+**WARNING**
+
+- **Risk of Electric Shock**: Before beginning any work, always shut off the main power supply and disconnect the power plug from the outlet.
+    
+- **Residual Pressure**: High pressure may remain inside the pump. Therefore, open the drain valve and verify that the pressure has dissipated completely before starting work.
+    
+
+**CAUTION (SP-X200 Only)**
+
+- **Risk of Chemical Burns**: If you use the chemical-resistant model (SP-X200), hazardous chemical liquids may remain inside the system. Consequently, you must wear chemical-resistant gloves and safety glasses to prevent contact with your skin.
+    
+
+## 3.3 Items to Prepare
+
+The following tools and replacement components are required for this task. Prepare them before starting work.
+
+|**Item Name**|**Specification/Part Number**|**Remarks**|
+|---|---|---|
+|Replacement Filter|FLT-X100 (Standard) / FLT-X200 (Chemical-Resistant)|Prepare the item matching your model|
+|O-ring|OR-S25|Replace with a new one|
+|Hex Wrench|5mm|For securing the housing|
+|Torque Wrench|Setting range: 10–20 N·m|For tightening control|
+|Ceramic Spanner|SP-TOOL-01|**Required for SP-X200 only**|
+
+## 3.4 Replacement Procedure
+
+Follow the steps below to replace the filter element.
+
+1. **Removing the Housing**
+    
+    Use a 5mm hex wrench to loosen the four bolts at the bottom of the filter housing. Remove the bolts completely, then slowly pull out the housing. Because the internal liquid may spill during this process, prepare a drip pan in advance.
+    
+2. **Removing the Old Filter**
+    
+    Turn the used filter element counterclockwise to remove it.
+    
+    - **For SP-X100 (Standard Model)**: Pull it out directly by hand.
+        
+    - **For SP-X200 (Chemical-Resistant Model)**: The filter may be stuck. Therefore, use the dedicated ceramic spanner (SP-TOOL-01) to loosen it carefully.
+        
+3. **Cleaning and O-ring Replacement**
+    
+    Wipe the inside of the housing clean with an industrial wipe. Remove the old O-ring, apply a thin layer of silicone grease to the new O-ring (OR-S25), and fit it securely into the groove.
+    
+4. **Installing the New Filter**
+    
+    Install the new filter element. Ensure that you push it firmly all the way into the seat.
+    
+5. **Reassembly and Tightening**
+    
+    Return the housing to its original position and temporarily tighten the bolts by hand. Subsequently, use a torque wrench to tighten the bolts diagonally to a final torque of **15 N·m**. Insufficient torque causes liquid leakage, whereas excessive torque causes structural damage.
+    
+
+## 3.5 Disposal
+
+You must dispose of the removed filter and O-ring as industrial waste.
+
+Specifically, filters used in the **SP-X200 (Chemical-Resistant Model)** may carry hazardous chemical substances. Therefore, place them in a sealed bag and dispose of them properly as Specially Controlled Industrial Waste in compliance with your local environmental regulations and company policies. Do not discard them with general waste.
+
+## 3.6 Main Specifications (Reference)
+
+|**Item**|**SP-X100 (Standard)**|**SP-X200 (Chemical-Resistant)**|
+|---|---|---|
+|Filtration Accuracy|10 µm|5 µm|
+|Maximum Operating Pressure|1.0 MPa|1.5 MPa|
+|Allowable Liquid Temperature|0 to 60°C|0 to 90°C|
+|Body Material|SUS304|PTFE Lining|
+
+
+© 2026 Natsuki Wakabayashi/ISE. Some rights reserved.
+This work is licensed under CC BY-NC 4.0. Based on iiRDS specifications.
