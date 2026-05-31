@@ -54,4 +54,29 @@ Run the final compliance audit using **Appendix H**. The resulting report (**App
 ## 🔗 Primary Resources & Primary Compliance
 Remember that these assets serve as non-commercial educational sandboxes. To anchor your real-world production data to absolute reality, always synchronize your architecture with the definitive standards at the [iiRDS Official Consortium](https://iirds.org/).
 
-© 2026 Natsuki Wakabayashi/ISE. Some rights reserved. This work is licensed under CC BY-NC 4.0. Based on iiRDS specifications.
+## 📜 License
+
+This repository and all its structural assets, prompts, and sample payloads are licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**.
+
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+
+### 🚀 Hands-on Sandbox Policy: Feel Free to Copy and Test!
+We highly encourage readers, engineers, and researchers to **freely copy, modify, and run these assets in your personal testing environments or local sandboxes**. If these prompts and structured payloads help deepen your understanding of iiRDS and Answer Engine Optimization (AEO), this repository has fully achieved its purpose.
+
+### ⚠️ Strict Note for Commercial and Industrial Application
+While personal testing and learning are entirely unrestricted, please note that these payloads are provided strictly as conceptual proof-of-concept (PoC) references built with deep respect for the official **iiRDS (International Standard for Intelligent Information Request and Delivery)** specifications managed by the tekom/iiRDS Consortium. 
+
+If your organization intends to deploy graph-aware atomic architectures or standardized metadata schemas in a commercial, production, or real-world industrial environment, you are strongly urged to directly review the definitive specifications at the [iiRDS Official Website](https://iirds.org/) and re-engineer your own knowledge graph frameworks.
+
+---
+
+## ✍️ Citation
+
+If you utilize this architectural framework, these datasets, or the prompt methodologies in academic papers, research, or non-commercial corporate analytical frameworks, please cite the official tcworld 2026 series using the format below:
+
+```text
+© 2026 Natsuki Wakabayashi/ISE. Some rights reserved.
+This work is licensed under CC BY-NC 4.0. Based on iiRDS specifications.
+
+Citation Reference:
+Natsuki Wakabayashi / ISE, "From Digital Landfill to Strategic Assets: Unleashing iiRDS and Knowledge Graphs in the AI Era," tcworld magazine, 3-part series (2026).
