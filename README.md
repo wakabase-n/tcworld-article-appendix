@@ -49,21 +49,21 @@ The repository is organized by article parts, each containing standalone verific
 
 ## 🛠️ Series Overview & Quick Links
 
-### [Part 1: The Blueprint for “Certainty” in the AI Era](https://www.google.com/search?q=./part1/)
+### [Part 1: The Blueprint for “Certainty” in the AI Era](./part1/)
 
 - **Focus:** Escaping the "Digital Landfill" using the **V3 Answer Engine Optimization (AEO) Architecture**. Breaking the Normalization Paradox via **Strategic Packing**.
 - **Key Assets:**
     - iiRDS-compliant structuring and auditing prompts.
     - Comparative validation logs demonstrating RAG hygiene optimization.
 
-### [Part 2: From Vectors to Graphs — How iiRDS Unleashes “Information Connections”](https://www.google.com/search?q=./part2/)
+### [Part 2: From Vectors to Graphs — How iiRDS Unleashes “Information Connections”](./part2/)
 
 - **Focus:** Transitioning from probabilistic vector similarity to the **Graph-Aware Atomic Architecture (V4)**. Mitigating "Edge Contamination" through the **Discipline of Silence**.
 - **Key Assets:**
     - iiRDS Atomic Data v1.2 specifications and RDF/SPO triplet structures.
     - Raw failure/success comparison logs across multiple testing scenarios (TEST A, B, and C).
 
-### [Part 3: Harvest — The Moment Information Architecture Transforms into a Corporate “Strategic Asset”](https://www.google.com/search?q=./part3/)
+### [Part 3: Harvest — The Moment Information Architecture Transforms into a Corporate “Strategic Asset”](./part3/)
 
 - **Focus:** Headless content delivery and UI-less dominance. Transforming knowledge graphs into **Schema.org JSON-LD** and synchronizing static manuals with active **IoT Physical Interlocks**.
 - **Key Assets:**
